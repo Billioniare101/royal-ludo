@@ -1,0 +1,21 @@
+{
+  "name": "@royal-ludo/game-engine",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:simulation": "vitest run --reporter verbose"
+  },
+  "dependencies": {
+    "@royal-ludo/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.0"
+  }
+}
