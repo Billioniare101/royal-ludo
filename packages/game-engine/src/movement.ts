@@ -43,7 +43,9 @@ export function canMovePiece(piece: Piece, diceValue: number, pieces: Piece[]): 
       return false;
     }
     const startPosition = getStartPosition(piece.color);
-    return !pieces.some((candidate) => candidate.id !== piece.id && candidate.state === 'active' && candidate.position === startPosition);
+    return !pieces.some(
+      (candidate) => candidate.id !== piece.id && candidate.state === 'active' && candidate.position === startPosition,
+    );
   }
 
   const colorPath = BOARD_PATHS[piece.color];
@@ -58,7 +60,18 @@ export function canMovePiece(piece: Piece, diceValue: number, pieces: Piece[]): 
   }
 
   const targetPosition = colorPath[nextIndex];
-  return !pieces.some((candidate) => candidate.id !== piece.id && candidate.state !== 'home' && candidate.position === targetPosition);
+  const occupants = pieces.filter(
+    (candidate) => candidate.id !== piece.id && candidate.state !== 'home' && candidate.position === targetPosition,
+  );
+  if (occupants.length === 0) {
+    return true;
+  }
+
+  if (occupants.some((candidate) => candidate.color === piece.color)) {
+    return false;
+  }
+
+  return !isSafeSquare(targetPosition);
 }
 
 export function movePiece(piece: Piece, diceValue: number): Piece {

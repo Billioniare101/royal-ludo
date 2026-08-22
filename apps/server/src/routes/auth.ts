@@ -4,11 +4,15 @@ import { LoginSchema, RegisterSchema } from '@royal-ludo/shared';
 import { prisma } from '../lib/prisma.js';
 import { signToken } from '../lib/jwt.js';
 import { authMiddleware, type AuthRequest } from '../middleware/auth.js';
+import { createRateLimitMiddleware } from '../middleware/rateLimit.js';
 
 type PrismaLike = Pick<typeof prisma, 'user'>;
 
 export function createAuthRouter(prismaClient: PrismaLike = prisma): Router {
   const router = Router();
+  const rateLimit = createRateLimitMiddleware();
+
+  router.use(rateLimit);
 
   router.post('/register', async (req, res) => {
     const parsed = RegisterSchema.safeParse(req.body);

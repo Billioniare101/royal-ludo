@@ -1,11 +1,13 @@
 import { Router } from 'express';
 import { CreateRoomSchema, JoinRoomSchema } from '@royal-ludo/shared';
 import { authMiddleware, type AuthRequest } from '../middleware/auth.js';
+import { createRateLimitMiddleware } from '../middleware/rateLimit.js';
 import { roomManager } from '../rooms/manager.js';
 
 export const roomsRouter: ReturnType<typeof Router> = Router();
 
 roomsRouter.use(authMiddleware);
+roomsRouter.use(createRateLimitMiddleware());
 
 roomsRouter.post('/', (req: AuthRequest, res) => {
   const parsed = CreateRoomSchema.safeParse(req.body ?? {});

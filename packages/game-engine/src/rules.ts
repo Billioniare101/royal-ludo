@@ -46,7 +46,8 @@ export function validateMove(
     return { valid: false, reason: 'Piece not found' };
   }
 
-  if (!canMovePiece(piece, gameState.diceValue, player.pieces)) {
+  const allPieces = gameState.players.flatMap((candidate) => candidate.pieces);
+  if (!canMovePiece(piece, gameState.diceValue, allPieces)) {
     return { valid: false, reason: 'Invalid move' };
   }
 

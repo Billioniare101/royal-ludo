@@ -71,7 +71,8 @@ export function processMovePiece(gameState: GameState, playerId: string, pieceId
     throw new Error('Invalid game state');
   }
 
-  if (!canMovePiece(piece, diceValue, player.pieces)) {
+  const allPieces = gameState.players.flatMap((candidate) => candidate.pieces);
+  if (!canMovePiece(piece, diceValue, allPieces)) {
     throw new Error('Invalid move');
   }
 

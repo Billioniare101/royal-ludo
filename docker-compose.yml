@@ -20,7 +20,7 @@ services:
       - "3001:3001"
     environment:
       DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/royal_ludo"
-      JWT_SECRET: your-secret-key
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-env}
       PORT: 3001
     depends_on:
       - postgres
