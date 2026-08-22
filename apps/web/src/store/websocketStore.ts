@@ -66,9 +66,13 @@ export const useWebSocketStore = create<WebSocketState>((set, get) => ({
     });
 
     socket.addEventListener('message', (event) => {
-      const message = JSON.parse(event.data as string) as ServerMessage;
-      set({ lastMessageType: message.type });
-      handleServerMessage(message);
+      try {
+        const message = JSON.parse(event.data as string) as ServerMessage;
+        set({ lastMessageType: message.type });
+        handleServerMessage(message);
+      } catch {
+        useGameStore.getState().setError('Received an invalid realtime payload.');
+      }
     });
 
     socket.addEventListener('close', () => {

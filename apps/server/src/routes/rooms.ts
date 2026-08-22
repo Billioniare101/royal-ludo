@@ -5,9 +5,9 @@ import { createRateLimitMiddleware } from '../middleware/rateLimit.js';
 import { roomManager } from '../rooms/manager.js';
 
 export const roomsRouter: ReturnType<typeof Router> = Router();
+const rateLimit = createRateLimitMiddleware();
 
-roomsRouter.use(authMiddleware);
-roomsRouter.use(createRateLimitMiddleware());
+roomsRouter.use(rateLimit, authMiddleware);
 
 roomsRouter.post('/', (req: AuthRequest, res) => {
   const parsed = CreateRoomSchema.safeParse(req.body ?? {});

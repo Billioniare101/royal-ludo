@@ -23,7 +23,7 @@ export const GameStateSchema = z.object({
   id: z.string(),
   roomCode: z.string().length(6),
   status: GameStatusSchema,
-  players: z.array(PlayerSchema).min(2).max(4),
+  players: z.array(PlayerSchema).min(1).max(4),
   currentPlayerIndex: z.number().int().min(0).max(3),
   diceValue: z.number().int().min(1).max(6).nullable(),
   diceRolled: z.boolean(),

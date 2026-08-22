@@ -12,9 +12,7 @@ export function createAuthRouter(prismaClient: PrismaLike = prisma): Router {
   const router = Router();
   const rateLimit = createRateLimitMiddleware();
 
-  router.use(rateLimit);
-
-  router.post('/register', async (req, res) => {
+  router.post('/register', rateLimit, async (req, res) => {
     const parsed = RegisterSchema.safeParse(req.body);
     if (!parsed.success) {
       res.status(400).json({ error: parsed.error.flatten() });
@@ -47,7 +45,7 @@ export function createAuthRouter(prismaClient: PrismaLike = prisma): Router {
     }
   });
 
-  router.post('/login', async (req, res) => {
+  router.post('/login', rateLimit, async (req, res) => {
     const parsed = LoginSchema.safeParse(req.body);
     if (!parsed.success) {
       res.status(400).json({ error: parsed.error.flatten() });
@@ -80,7 +78,7 @@ export function createAuthRouter(prismaClient: PrismaLike = prisma): Router {
     });
   });
 
-  router.get('/me', authMiddleware, async (req: AuthRequest, res) => {
+  router.get('/me', rateLimit, authMiddleware, async (req: AuthRequest, res) => {
     const userId = req.user?.userId;
     if (!userId) {
       res.status(401).json({ error: 'Unauthorized' });
