@@ -1,0 +1,32 @@
+{
+  "name": "royal-ludo",
+  "version": "1.0.0",
+  "description": "Production-grade online multiplayer Ludo game",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter web dev\" \"pnpm --filter server dev\"",
+    "build": "pnpm --recursive build",
+    "build:web": "pnpm --filter web build",
+    "build:server": "pnpm --filter server build",
+    "start:server": "pnpm --filter server start",
+    "test": "pnpm --recursive test",
+    "test:watch": "pnpm --recursive test -- --watch",
+    "test:coverage": "pnpm --recursive test -- --coverage",
+    "test:simulation": "pnpm --filter game-engine test:simulation",
+    "lint": "pnpm --recursive lint",
+    "typecheck": "pnpm --recursive typecheck",
+    "db:migrate": "pnpm --filter server db:migrate",
+    "db:seed": "pnpm --filter server db:seed",
+    "db:studio": "pnpm --filter server db:studio"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}
