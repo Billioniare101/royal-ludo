@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "Royal Ludo",
+    "slug": "royal-ludo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "scheme": "royalludo",
+    "icon": "./assets/icon.png",
+    "android": {
+      "package": "com.royalludo.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "permissions": [
+        "INTERNET"
+      ],
+      "predictiveBackGestureEnabled": false
+    },
+    "ios": {
+      "bundleIdentifier": "com.royalludo.app",
+      "supportsTablet": true
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "cd676e79-4c8b-4947-9860-53f44ad351d0"
+      }
+    }
+  }
+}
