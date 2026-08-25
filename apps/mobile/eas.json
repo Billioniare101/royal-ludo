@@ -4,9 +4,9 @@
       "distribution": "internal",
       "node": "20.19.4",
       "android": {
-        "buildType": "apk"
-      },
-      "image": "latest"
+        "buildType": "apk",
+        "image": "latest"
+      }
     }
   }
 }
