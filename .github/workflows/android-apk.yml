@@ -1,0 +1,65 @@
+name: Android APK Build
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'apps/mobile/**'
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: 'EAS build profile'
+        required: false
+        default: 'preview'
+        type: choice
+        options:
+          - preview
+          - production
+
+jobs:
+  build:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: apps/mobile/package-lock.json
+
+      - name: Install dependencies
+        working-directory: apps/mobile
+        run: npm install
+
+      - name: Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Build Android APK
+        working-directory: apps/mobile
+        run: eas build --platform android --profile ${{ inputs.profile || 'preview' }} --non-interactive
+
+      - name: Download APK artifact
+        working-directory: apps/mobile
+        run: |
+          BUILD_URL=$(eas build:list --platform android --status finished --limit 1 --json --non-interactive | jq -r '.[0].artifacts.buildUrl')
+          echo "APK URL: $BUILD_URL"
+          curl -L "$BUILD_URL" -o royal-ludo.apk
+
+      - name: Upload APK to GitHub Actions artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: royal-ludo-android-apk
+          path: apps/mobile/royal-ludo.apk
+          retention-days: 30
