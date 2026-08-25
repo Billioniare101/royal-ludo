@@ -1,1 +1,21 @@
-{\n  "expo": {\n    "name": "Royal Ludo",\n    "slug": "royal-ludo",\n    "version": "1.0.0",\n    "orientation": "portrait",\n    "userInterfaceStyle": "dark",\n    "assetBundlePatterns": ["**/*"],\n    "ios": {\n      "supportsTabletMode": true,\n      "bundleIdentifier": "com.royalludo.app"\n    },\n    "android": {\n      "package": "com.royalludo.app",\n      "permissions": ["INTERNET", "CAMERA"]\n    },\n    "scheme": "royalludo",\n    "plugins": ["expo-router/plugin"]\n  }\n}\n
+{
+  "expo": {
+    "name": "Royal Ludo",
+    "owner": "billionaireone",
+    "slug": "royal-ludo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTabletMode": true,
+      "bundleIdentifier": "com.royalludo.app"
+    },
+    "android": {
+      "package": "com.royalludo.app",
+      "permissions": ["INTERNET", "CAMERA"]
+    },
+    "scheme": "royalludo",
+    "plugins": ["expo-router/plugin"]
+  }
+}
