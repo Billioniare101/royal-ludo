@@ -22,6 +22,9 @@ jobs:
   build:
     name: Build Android APK
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/mobile
     permissions:
       contents: read
 
@@ -37,7 +40,6 @@ jobs:
           cache-dependency-path: apps/mobile/package-lock.json
 
       - name: Install dependencies
-        working-directory: apps/mobile
         run: npm install
 
       - name: Setup EAS
@@ -45,13 +47,12 @@ jobs:
         with:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
+          packager: npm
 
       - name: Build Android APK
-        working-directory: apps/mobile
         run: eas build --platform android --profile ${{ inputs.profile || 'preview' }} --non-interactive
 
       - name: Download APK artifact
-        working-directory: apps/mobile
         run: |
           BUILD_URL=$(eas build:list --platform android --status finished --limit 1 --json --non-interactive | jq -r '.[0].artifacts.buildUrl')
           echo "APK URL: $BUILD_URL"
