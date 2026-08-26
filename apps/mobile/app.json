@@ -1,1 +1,45 @@
-{\n  "expo": {\n    "name": "Royal Ludo",\n    "slug": "royal-ludo",\n    "version": "1.0.0",\n    "orientation": "portrait",\n    "userInterfaceStyle": "dark",\n    "assetBundlePatterns": ["**/*"],\n    "ios": {\n      "supportsTabletMode": true,\n      "bundleIdentifier": "com.royalludo.app"\n    },\n    "android": {\n      "package": "com.royalludo.app",\n      "permissions": ["INTERNET", "CAMERA"]\n    },\n    "scheme": "royalludo",\n    "plugins": ["expo-router/plugin"]\n  }\n}\n
+{
+  "expo": {
+    "name": "Royal Ludo",
+    "slug": "royal-ludo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon_2.png",
+    "scheme": "royalludo",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/icon_2.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": false
+    },
+    "android": {
+      "package": "com.royalludo.app"
+    },
+    "web": {
+      "favicon": "./assets/images/icon_2.png"
+    },
+    "plugins": [
+      [
+        "expo-router",
+        {
+          "origin": "https://replit.com/"
+        }
+      ],
+      "expo-font",
+      "expo-web-browser"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "cd676e79-4c8b-4947-9860-53f44ad351d0"
+      }
+    }
+  }
+}

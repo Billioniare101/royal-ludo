@@ -1,21 +1,9 @@
 {
-  "name": "royal-ludo",
-  "private": true,
+  "name": "royal-ludo-android-preview",
   "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "test": "turbo run test",
-    "typecheck": "turbo run typecheck",
-    "lint": "turbo run lint"
-  },
+  "private": true,
+  "packageManager": "yarn@1.22.19",
   "workspaces": [
-    "packages/*",
-    "apps/*"
-  ],
-  "devDependencies": {
-    "turbo": "^1.10.16",
-    "typescript": "^5.3.3"
-  }
+    "apps/mobile"
+  ]
 }
