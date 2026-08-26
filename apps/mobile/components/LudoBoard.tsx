@@ -56,10 +56,10 @@ const HOME_LAYOUT: Record<ColorKey, {
 const HOME_KEYS: ColorKey[] = ['ruby', 'gold', 'emerald', 'sapphire'];
 const SAFE_CELLS = new Set(['6-2', '2-8', '8-12', '12-6', '6-12', '12-8', '8-2', '2-6']);
 const START_CELLS: Record<string, ColorKey> = {
-  '7-1': 'emerald',
-  '1-7': 'ruby',
-  '7-13': 'sapphire',
-  '13-7': 'gold',
+  '6-1': 'ruby',
+  '1-8': 'gold',
+  '8-13': 'sapphire',
+  '13-6': 'emerald',
 };
 
 function isHomeCell(row: number, column: number) {
