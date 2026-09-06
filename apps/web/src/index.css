@@ -4,4 +4,11 @@
 
 body {
   @apply bg-royal-dark text-white font-sans;
+  background-image: radial-gradient(circle at 75% 15%, rgba(107, 33, 168, 0.28), transparent 34rem),
+    radial-gradient(circle at 15% 75%, rgba(245, 158, 11, 0.08), transparent 26rem);
+  min-width: 320px;
+}
+
+html {
+  scroll-behavior: smooth;
 }
