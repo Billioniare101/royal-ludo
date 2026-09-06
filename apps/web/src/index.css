@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 body {
-  @apply bg-royal-dark text-white font-sans;
-  background-image: radial-gradient(circle at 75% 15%, rgba(107, 33, 168, 0.28), transparent 34rem),
-    radial-gradient(circle at 15% 75%, rgba(245, 158, 11, 0.08), transparent 26rem);
+  @apply bg-foundation-ink text-foundation-paper font-sans;
+  background-image: radial-gradient(circle at 85% 5%, rgba(231, 111, 81, 0.1), transparent 32rem),
+    radial-gradient(circle at 10% 75%, rgba(126, 166, 144, 0.1), transparent 28rem);
   min-width: 320px;
 }
 
